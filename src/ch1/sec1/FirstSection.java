@@ -3,7 +3,7 @@ package ch1.sec1;
 import java.io.Console;
 
 public class FirstSection {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Console terminal = System.console();
         System.out.println("Yor name: ");
         String name = terminal.readLine();
