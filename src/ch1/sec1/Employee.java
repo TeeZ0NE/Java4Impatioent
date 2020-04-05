@@ -11,6 +11,11 @@ public class Employee {
         this.name = name;
     }
 
+    public Employee(String name, double salary) {
+        this.salary = salary;
+        this.name = name;
+    }
+
     public void setSalary(double salary) {
         String validatedMsgOfNewSalary = validateNewSalary(salary);
         try {
@@ -45,5 +50,9 @@ public class Employee {
 
     public double getSalary() {
         return salary;
+    }
+
+    public void printEmplData() {
+        System.out.printf("Employee name: %s with salary: %.2f%n", getName(), getSalary());
     }
 }
