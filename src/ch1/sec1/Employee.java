@@ -1,13 +1,10 @@
 package ch1.sec1;
 
-import java.util.EmptyStackException;
-
 public class Employee {
     private double salary;
-    private String name;
+    private final String name;
 
     public Employee(String name) {
-        this.salary = 0.0;
         this.name = name;
     }
 
