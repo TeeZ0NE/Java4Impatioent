@@ -4,6 +4,9 @@ import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
+/**
+ * Class Employee create simple employee.
+ */
 public class Employee {
     private double salary;
     private final String name;
@@ -11,23 +14,43 @@ public class Employee {
     public int ID;
 
     static {
-        lastId= 1;
+        lastId = 1;
     }
 
+    /**
+     * Constructor wo salary.
+     *
+     * @param name of employee
+     */
     public Employee(String name) {
         this.name = name;
         addIdd();
     }
 
+    /**
+     * Full constructor.
+     *
+     * @param name of employee
+     * @param salary amount of salary at start
+     */
     public Employee(String name, double salary) {
         this.salary = salary;
         this.name = name;
         addIdd();
     }
 
+    /**
+     * Increment ID.
+     */
     private void addIdd() {
         this.ID = lastId++;
     }
+
+    /**
+     * Set salary for employee.
+     *
+     * @param salary Amount of salary
+     */
     public void setSalary(double salary) {
         String validatedMsgOfNewSalary = validateNewSalary(salary);
         try {
@@ -38,6 +61,12 @@ public class Employee {
         }
     }
 
+    /**
+     * Check is salary can be set.
+     *
+     * @param salary
+     * @return message if something went wrong
+     */
     private String validateNewSalary(double salary) {
         String msg = "";
 
@@ -46,6 +75,12 @@ public class Employee {
         return msg;
     }
 
+    /**
+     * Increase salary for employee.
+     *
+     * @param percentage amount of increase
+     * @return true if increased otherwise false
+     */
     public boolean increaseSalary(double percentage) {
         boolean isIncreased = Boolean.FALSE;
 
@@ -56,18 +91,36 @@ public class Employee {
         return isIncreased;
     }
 
+    /**
+     * Get employee name.
+     *
+     * @return name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Get current employee salary.
+     *
+     * @return salary amount
+     */
     public double getSalary() {
         return salary;
     }
 
+    /**
+     * Print data about employee.
+     */
     public void printEmplData() {
         System.out.printf("Employee name: %s with salary: %.2f%n", getName(), getSalary());
     }
 
+    /**
+     * toString class.
+     *
+     * @return string contains main employee's data
+     */
     @Override
     public String toString() {
         DecimalFormat decFormat = new DecimalFormat("#.##");

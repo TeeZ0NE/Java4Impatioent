@@ -1,6 +1,34 @@
 package ch2.sec4;
 
+import static ch.AssertionCheck.*;
+
 public class FactoryOfEmployees {
+    /**
+     * Richest class.
+     */
+    private static class Richest {
+        /**
+         * Get most of richest from staff.
+         *
+         * @param staff
+         * @return
+         */
+        private static Employee getRichest(ArrayListOfStaff<Employee> staff) {
+            Employee currEmployee = new Employee("Nobody");
+            for (Employee employee : staff) {
+                if (employee.getSalary() > currEmployee.getSalary()) {
+                    currEmployee = employee;
+                }
+            }
+            return currEmployee;
+        }
+    }
+
+    /**
+     * Main method.
+     *
+     * @param args array of console arguments
+     */
     public static void main(String[] args) {
         Employee employee1 = new Employee("Bob");
         employee1.printEmplData();
@@ -32,29 +60,26 @@ public class FactoryOfEmployees {
         staff.add(new Employee("Rich", 2500D));
         System.out.println(staff);
         // get richest employee and fire him then //
-        Employee richestEmployee = getRichest(staff);
+        Employee richestEmployee = Richest.getRichest(staff);
 
         System.out.format("Get richest (name: %s) employee from a list and he still working: %b%n", richestEmployee.getName(), staff.contains(richestEmployee));
-        System.out.format("Giving the sack 2 employee %b%n",fireEmployee(staff, richestEmployee));
+        System.out.format("Giving the sack 2 employee %b%n", fireEmployeeMain(staff, richestEmployee));
         System.out.format("Get richest (name: %s) employee from a list and he still working: %b%n", richestEmployee.getName(), staff.isInStaff(richestEmployee));
+        assertion(!staff.contains(richestEmployee), "Richest found");
     }
 
-    private static Employee getRichest(ArrayListOfStaff<Employee> staff) {
-        Employee currEmployee = new Employee("Nobody");
-        for (Employee employee : staff) {
-            if (employee.getSalary() > currEmployee.getSalary()) {
-                currEmployee = employee;
-            }
-        }
 
-        return currEmployee;
-    }
-
-    private static boolean fireEmployee(ArrayListOfStaff<Employee> staff, Employee employee2fire) {
-        boolean isFired = (staff.contains(employee2fire))
+    /**
+     * Fire employee.
+     *
+     * @param staff Group of staff
+     * @param employee2fire employee which will be fired
+     * @return if fired true or false if didn't
+     * @see ArrayListOfStaff#fireEmployee(Employee)
+     */
+    private static boolean fireEmployeeMain(ArrayListOfStaff<Employee> staff, Employee employee2fire) {
+        return (staff.contains(employee2fire))
                 ? staff.fireEmployee(employee2fire)
                 : Boolean.FALSE;
-
-        return isFired;
     }
 }

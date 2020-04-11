@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Extended ArrayList fo employers.
  *
- * @param <E>
+ * @param <E> Employee inheritance
  */
 public class ArrayListOfStaff<E> extends ArrayList<E> {
     /**
