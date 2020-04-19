@@ -1,8 +1,8 @@
 package issues.sort_obj;
 
 public class Obj {
-    private int id, parent_id;
-    private String title;
+    public int id, parent_id;
+    public String title;
 
     public Obj(int id, String title){
         this.id = id;
@@ -13,7 +13,9 @@ public class Obj {
         this.parent_id = parent_id;
     }
 
-    public Obj() {}
+    public Obj(Obj obj){
+        this(obj.id, obj.title, obj.parent_id);
+    }
 
     @Override
     public String toString() {
