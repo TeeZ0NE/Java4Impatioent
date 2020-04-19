@@ -1,25 +1,26 @@
 package issues.sort_obj;
 
-public class Obj {
+public class MainObject {
     public int id, parent_id;
     public String title;
 
-    public Obj(int id, String title){
+    public MainObject(int id, String title) {
         this.id = id;
         this.title = title;
     }
-    public Obj(int id, String title, int parent_id){
+
+    public MainObject(int id, String title, int parent_id) {
         this(id, title);
         this.parent_id = parent_id;
     }
 
-    public Obj(Obj obj){
-        this(obj.id, obj.title, obj.parent_id);
+    public MainObject(MainObject mainObject) {
+        this(mainObject.id, mainObject.title, mainObject.parent_id);
     }
 
     @Override
     public String toString() {
-        return "Obj{" +
+        return "{" +
                 "id=" + id +
                 ", parent_id=" + parent_id +
                 ", title='" + title + '\'' +

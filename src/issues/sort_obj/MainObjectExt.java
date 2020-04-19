@@ -1,26 +1,32 @@
 package issues.sort_obj;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
-public class ObjExt extends Obj {
-    public ArrayList<Obj> children;
-    public ObjExt(Obj obj){
-        super(obj);
+public class MainObjectExt extends MainObject {
+    public ArrayList<MainObject> children;
+
+    public MainObjectExt(MainObject mainObject) {
+        super(mainObject);
         this.children = new ArrayList<>();
     }
 
-    public void setChildren(Obj children) {
+    public void setChildren(MainObject children) {
         this.children.add(children);
+    }
+
+    public boolean emptyChildren() {
+        return this.children.size() == 0;
     }
 
     @Override
     public String toString() {
-        return "ObjExt{" +
-                "id=" + id +
-                ", parent_id=" + parent_id +
+        String parentid = parent_id > 0 ? Integer.toString(parent_id) : "null";
+        String ID = Integer.toString(id);
+        return "{" +
+                "id=" + ID +
+                ", parent_id=" + parentid +
                 ", title='" + title + '\'' +
-                "children=" + children +
+                ", children=" + children +
                 '}';
     }
 }
