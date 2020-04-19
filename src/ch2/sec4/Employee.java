@@ -7,7 +7,7 @@ import java.text.NumberFormat;
 /**
  * Class Employee create simple employee.
  */
-public class Employee {
+public class Employee implements IntEmployee, Comparable<Employee> {
     private double salary;
     private final String name;
     private static int lastId;
@@ -64,10 +64,10 @@ public class Employee {
     /**
      * Check is salary can be set.
      *
-     * @param salary
+     * @param salary storing new employee salary
      * @return message if something went wrong
      */
-    private String validateNewSalary(double salary) {
+    public String validateNewSalary(double salary) {
         String msg = "";
 
         if (salary < 0) msg = "Value cannot be negative or less then zero";
@@ -113,7 +113,7 @@ public class Employee {
      * Print data about employee.
      */
     public void printEmplData() {
-        System.out.printf("Employee name: %s with salary: %.2f%n", getName(), getSalary());
+        IntEmployee.super.printEmplData();
     }
 
     /**
@@ -126,11 +126,22 @@ public class Employee {
         DecimalFormat decFormat = new DecimalFormat("#.##");
         NumberFormat numberFormat = NumberFormat.getCurrencyInstance();
         decFormat.setRoundingMode(RoundingMode.HALF_UP);
-        return "Employee{" +
+        return
+                "Employee{" +
                 "ID=" + ID +
                 ", salary=" + numberFormat.format(salary) +
                 ", amount= " + decFormat.format(salary) +
                 ", name='" + name + '\'' +
                 '}';
+    }
+
+    /**
+     * Compare salaries of employee.
+     *
+     * @param other Next employee
+     * @return Result of comparable
+     */
+    public int compareTo(Employee other){
+        return Double.compare(getSalary(), other.getSalary());
     }
 }

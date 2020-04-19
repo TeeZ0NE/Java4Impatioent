@@ -28,4 +28,8 @@ public class ArrayListOfStaff<E> extends ArrayList<E> {
     public boolean isInStaff(Employee employee) {
         return contains(employee);
     }
+
+    public E getLast() {
+        return get(size()-1);
+    }
 }

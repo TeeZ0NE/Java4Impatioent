@@ -10,16 +10,16 @@ public class FactoryOfEmployees {
         /**
          * Get most of richest from staff.
          *
-         * @param staff
-         * @return
+         * @param staff Array list of staff
+         * @return Richest employee
          */
         private static Employee getRichest(ArrayListOfStaff<Employee> staff) {
             Employee currEmployee = new Employee("Nobody");
-            for (Employee employee : staff) {
-                if (employee.getSalary() > currEmployee.getSalary()) {
+            //                if (employee.getSalary() > currEmployee.getSalary()) {
+            for (Employee employee : staff)
+                if (employee.compareTo(currEmployee) > 0) {
                     currEmployee = employee;
                 }
-            }
             return currEmployee;
         }
     }
@@ -52,10 +52,16 @@ public class FactoryOfEmployees {
         employee1.printEmplData();
 
         staff.add(new Employee("TiRexx", 1200D));
-        staff.get(staff.size() - 1).increaseSalary(2);
-        staff.get(staff.size() - 1).printEmplData();
+        staff.getLast().increaseSalary(2);
+        staff.getLast().printEmplData();
 
         staff.add(new Employee("Homeless"));
+        int BobGettingMore = employee1.compareTo(staff.getLast());
+        switch (BobGettingMore) {
+            case -1: System.out.println(staff.getLast().getName() + " Getting more"); break;
+            case 0: System.out.println("They are giving equal");break;
+            case 1: System.out.println("Bob gets more");
+        }
         staff.removeIf(employee -> employee.getSalary() <= 0);
         staff.add(new Employee("Rich", 2500D));
         System.out.println(staff);
