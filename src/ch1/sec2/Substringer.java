@@ -32,10 +32,10 @@ public class Substringer {
         min = substrings.get(0);
         for(String word : substrings) {
             if (min.compareTo(word) < 0){
-                max = min;
-                min = word;
-            } else {
                 max = word;
+            }
+            if (min.compareTo(word) > 0){
+                min = word;
             }
         }
     }
