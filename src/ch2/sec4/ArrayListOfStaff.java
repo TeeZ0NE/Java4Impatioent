@@ -19,8 +19,7 @@ public class ArrayListOfStaff<E> extends ArrayList<E> {
     }
 
     /**
-     * Check is employee still in staff.
-     * The same as contain method
+     * Check is employee still in staff. The same as contain method
      *
      * @param employee Employee
      * @return Boolean
@@ -30,6 +29,6 @@ public class ArrayListOfStaff<E> extends ArrayList<E> {
     }
 
     public E getLast() {
-        return get(size()-1);
+        return get(size() - 1);
     }
 }
