@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+First manifest for calendar
+
+Name: Calendar.class
+Description some
+
